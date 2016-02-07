@@ -3,13 +3,23 @@ package projects.serveur.entites;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(
+	    name="type"
+	    
+	)
+@DiscriminatorValue("subscriber")
 public class Subscriber implements Serializable {
 	private int id ;
 	private String firstname ;

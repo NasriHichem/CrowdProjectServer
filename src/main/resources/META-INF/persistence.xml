@@ -3,7 +3,9 @@
 	<persistence-unit name="my-persistance">
 	<jta-data-source>java:/Crowd</jta-data-source>
 	<class>projects.serveur.entites.Subscriber</class>
-	
+		<class>projects.serveur.entites.Creator</class>
+		<class>projects.serveur.entites.Project</class>
+		<class>projects.serveur.entites.Category</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.show_sql" value="true"/>
