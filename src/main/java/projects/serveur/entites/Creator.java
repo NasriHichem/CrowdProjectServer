@@ -19,8 +19,8 @@ public class Creator extends Subscriber implements Serializable{
 	    
 	}
 	public Creator(int id, String firstname, String lastname, String email, String number_phone, String password,
-			List<Project>projects) {
-		super(id, firstname, lastname, email, number_phone, password);
+			List<Project>projects,List<Message>messages,List<Claim>claims) {
+		super(id, firstname, lastname, email, number_phone, password,messages,claims);
 		this.projects=projects;
 	    
 	}

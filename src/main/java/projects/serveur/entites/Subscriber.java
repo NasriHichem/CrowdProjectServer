@@ -27,6 +27,8 @@ public class Subscriber implements Serializable {
 	private String email ;
 	private String number_phone;
 	private String password ;
+	private List<Message>messages ;
+	private List<Claim>claims;
 	
 	
 	
@@ -34,7 +36,7 @@ public class Subscriber implements Serializable {
 		super();
 	}
 	public Subscriber(int id, String firstname, String lastname, String email, String number_phone,
-			String password) {
+			String password,List<Message>messages,List<Claim>claims) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
@@ -42,6 +44,8 @@ public class Subscriber implements Serializable {
 		this.email = email;
 		this.number_phone = number_phone;
 		this.password = password;
+		this.messages=messages;
+		this.claims=claims;
 		
 	}
 	@Id
@@ -81,6 +85,21 @@ public class Subscriber implements Serializable {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	@OneToMany(mappedBy="sender")
+	public List<Message> getMessages() {
+		return messages;
+	}
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
+	@OneToMany(mappedBy="claimer")
+	public List<Claim> getClaims() {
+		return claims;
+	}
+
+	public void setClaims(List<Claim> claims) {
+		this.claims = claims;
 	}
 	
 	

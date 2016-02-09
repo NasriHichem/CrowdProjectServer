@@ -8,8 +8,8 @@ public class Participant extends Subscriber implements Serializable {
 	private List<Contribuation>contribuations ;
 
 	public Participant(int id, String firstname, String lastname, String email, String number_phone, String password,
-			List<Message> messages,List<Contribuation>contribuations) {
-		super(id, firstname, lastname, email, number_phone, password);
+			List<Contribuation>contribuations,List<Message>messages,List<Claim>claims) {
+		super(id, firstname, lastname, email, number_phone, password,messages,claims);
 		this.contribuations=contribuations;
 	     
 	}

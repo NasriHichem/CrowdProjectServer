@@ -2,38 +2,55 @@ package projects.serveur.entites;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Claim implements Serializable{
 	
 	private int id ;
-	private Subscriber  complimaint ;
-	private Subscriber the_hcomplimaint ;
-	private String object ;
-	private String cause ;
-	public Claim(int id, Subscriber complimaint, Subscriber the_hcomplimaint, String object, String cause) {
+	private Subscriber  claimer ;// cheki
+	private Subscriber claming ;//li chkina bih 
+	private String object ;// objet recalamation
+	private String cause ;// sabab
+	private int etat_claim ;
+	
+	public Claim() {
+		super();
+	}
+	public Claim(int id, Subscriber claimer, Subscriber claming, String object, String cause,int etat_claim) {
 		super();
 		this.id = id;
-		this.complimaint = complimaint;
-		this.the_hcomplimaint = the_hcomplimaint;
+		this.claimer = claimer;
+		this.claming =claming;
 		this.object = object;
 		this.cause = cause;
+		this.etat_claim=etat_claim ;
 	}
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Subscriber getComplimaint() {
-		return complimaint;
+	@ManyToOne
+	public Subscriber getClaimer() {
+		return claimer;
 	}
-	public void setComplimaint(Subscriber complimaint) {
-		this.complimaint = complimaint;
+	public void setClaimer(Subscriber claimer) {
+		this.claimer = claimer;
 	}
-	public Subscriber getThe_hcomplimaint() {
-		return the_hcomplimaint;
+	@ManyToOne
+	public Subscriber getClaiming() {
+		return claming;
 	}
-	public void setThe_hcomplimaint(Subscriber the_hcomplimaint) {
-		this.the_hcomplimaint = the_hcomplimaint;
+	public void setClaiming(Subscriber claming) {
+		this.claming = claming;
 	}
 	public String getObject() {
 		return object;
@@ -47,6 +64,14 @@ public class Claim implements Serializable{
 	public void setCause(String cause) {
 		this.cause = cause;
 	}
+	public int getEtat_claim() {
+		return etat_claim;
+	}
+	public void setEtat_claim(int etat_claim) {
+		this.etat_claim = etat_claim;
+	}
+	
+	
 	
 
 }

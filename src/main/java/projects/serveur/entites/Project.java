@@ -8,11 +8,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 
 @Entity
+
 public class Project implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id ;
 	private String name;
 	private String title ;
@@ -21,8 +28,8 @@ public class Project implements Serializable{
 	private double objecif_financmant ;
 	private String picture_project ;
 	private String location ;
-	private boolean is_confirmed ;
-	private boolean is_validate ;
+	private int  is_confirmed ;
+	private int is_validate ;
 	private Creator creator ;
 	private Category category ;
 	
@@ -31,8 +38,8 @@ public class Project implements Serializable{
 	}
 
 	public Project(int id, String name, String title, String short_presentation, int duration,
-			double objecif_financmant, String picture_project, String location,boolean is_confirmed,
-		    boolean is_validate,Creator creator,Category category) {
+			double objecif_financmant, String picture_project, String location,int is_confirmed,
+		    int is_validate,Creator creator,Category category) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -112,19 +119,19 @@ public class Project implements Serializable{
 		this.location = location;
 	}
 
-	public boolean isIs_confirmed() {
+	public int isIs_confirmed() {
 		return is_confirmed;
 	}
 
-	public void setIs_confirmed(boolean is_confirmed) {
+	public void setIs_confirmed(int is_confirmed) {
 		this.is_confirmed = is_confirmed;
 	}
 	
-	public boolean isIs_validate() {
+	public int isIs_validate() {
 		return is_validate;
 	}
 
-	public void setIs_validate(boolean is_validate) {
+	public void setIs_validate(int is_validate) {
 		this.is_validate = is_validate;
 	}
 

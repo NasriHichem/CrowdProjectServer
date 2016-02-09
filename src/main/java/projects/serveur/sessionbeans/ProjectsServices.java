@@ -1,5 +1,6 @@
 package projects.serveur.sessionbeans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -28,6 +29,12 @@ public class ProjectsServices implements ProjectsServicesRemote {
 	public void addProject(Project p) {
 		em.persist(p);
 		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<Project> getListProjects() {
+		return (ArrayList<Project>) em.createQuery("select p from Project p ").getResultList();
 	}
 
 }
