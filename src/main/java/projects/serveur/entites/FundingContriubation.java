@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class FundingContriubation  extends Contribuation implements Serializable{
 
 	private int sum_fundings;
-	public FundingContriubation(int id, Participant participant, Project project
+	public FundingContriubation(ContribuationPk pk, Participant participant, Project project
 			,int sum_fundings) {
-		super(id, participant, project);
+		super(pk, participant, project);
 		this.sum_fundings=sum_fundings;
 		
 	}

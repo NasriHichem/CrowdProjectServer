@@ -1,6 +1,7 @@
 package projects.serveur.entites;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,35 +11,38 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 
 @Entity
 
 public class Project implements Serializable{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id ;
 	private String name;
 	private String title ;
 	private String short_presentation;
 	private int  duration ;
-	private double objecif_financmant ;
+	private float turget_funding ;
 	private String picture_project ;
 	private String location ;
 	private int  is_confirmed ;
 	private int is_validate ;
+	@ManyToOne
 	private Creator creator ;
+	@ManyToOne
 	private Category category ;
+	@OneToMany(mappedBy="project")
+	private List<Contribuation>contribuations;
 	
 	public Project() {
 		super();
 	}
 
 	public Project(int id, String name, String title, String short_presentation, int duration,
-			double objecif_financmant, String picture_project, String location,int is_confirmed,
+			float turget_funding, String picture_project, String location,int is_confirmed,
 		    int is_validate,Creator creator,Category category) {
 		super();
 		this.id = id;
@@ -46,7 +50,7 @@ public class Project implements Serializable{
 		this.title = title;
 		this.short_presentation = short_presentation;
 		this.duration = duration;
-		this.objecif_financmant = objecif_financmant;
+		this.turget_funding = turget_funding;
 		this.picture_project = picture_project;
 		this.location = location;
 		this.is_confirmed=is_confirmed ;
@@ -56,20 +60,19 @@ public class Project implements Serializable{
 	
 	}
 	public Project(String name, String title, String short_presentation, int duration,
-		double objecif_financmant, String location,
+	   float turget_funding, String location,
 	    Creator creator,Category category) {
 		super();		
 		this.name = name;
 		this.title = title;
 		this.short_presentation = short_presentation;
 		this.duration = duration;
-		this.objecif_financmant = objecif_financmant;		
+		this.turget_funding = turget_funding;		
 		this.location = location;	
 		this.creator=creator ;
 		this.category=category ; }
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	public int getId() {
 		return id;
 	}
@@ -100,11 +103,11 @@ public class Project implements Serializable{
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
-	public double getObjecif_financmant() {
-		return objecif_financmant;
+	public double getTurget_funding() {
+		return turget_funding;
 	}
-	public void setObjecif_financmant(double objecif_financmant) {
-		this.objecif_financmant = objecif_financmant;
+	public void setTurget_funding(float turget_funding) {
+		this.turget_funding = turget_funding;
 	}
 	public String getPicture_project() {
 		return picture_project;
@@ -135,20 +138,29 @@ public class Project implements Serializable{
 		this.is_validate = is_validate;
 	}
 
-	@ManyToOne
+	
 	public Creator getCreator() {
 		return creator;
 	}
 	public void setCreator(Creator creator) {
 		this.creator = creator;
 	}
-	@ManyToOne
+	
 	public Category getCategory() {
 		return category;
 	}
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
+	public List<Contribuation> getContribuations() {
+		return contribuations;
+	}
+
+	public void setContribuations(List<Contribuation> contribuations) {
+		this.contribuations = contribuations;
+	}
+	
 	
 	
 	

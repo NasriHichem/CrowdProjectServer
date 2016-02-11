@@ -21,13 +21,18 @@ import javax.persistence.OneToOne;
 	)
 @DiscriminatorValue("subscriber")
 public class Subscriber implements Serializable {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id ;
 	private String firstname ;
 	private String lastname ;
 	private String email ;
-	private String number_phone;
 	private String password ;
+	private String secret ;
+	private int accountnumber ;
+	@OneToMany(mappedBy="reciever")
 	private List<Message>messages ;
+	@OneToMany(mappedBy="claming")
 	private List<Claim>claims;
 	
 	
@@ -35,21 +40,19 @@ public class Subscriber implements Serializable {
 	public Subscriber() {
 		super();
 	}
-	public Subscriber(int id, String firstname, String lastname, String email, String number_phone,
-			String password,List<Message>messages,List<Claim>claims) {
+	public Subscriber(int id, String firstname, String lastname, String email,
+			String password,String secret,int accountnumber) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
-		this.number_phone = number_phone;
 		this.password = password;
-		this.messages=messages;
-		this.claims=claims;
+		this.secret=secret;
+		this.accountnumber=accountnumber;
 		
 	}
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	public int getId() {
 		return id;
 	}
@@ -74,26 +77,21 @@ public class Subscriber implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getNumber_phone() {
-		return number_phone;
-	}
-	public void setNumber_phone(String number_phone) {
-		this.number_phone = number_phone;
-	}
+	
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@OneToMany(mappedBy="sender")
+	
 	public List<Message> getMessages() {
 		return messages;
 	}
 	public void setMessages(List<Message> messages) {
 		this.messages = messages;
 	}
-	@OneToMany(mappedBy="claimer")
+	
 	public List<Claim> getClaims() {
 		return claims;
 	}
@@ -101,6 +99,19 @@ public class Subscriber implements Serializable {
 	public void setClaims(List<Claim> claims) {
 		this.claims = claims;
 	}
+	public String getSecret() {
+		return secret;
+	}
+	public void setSecret(String secret) {
+		this.secret = secret;
+	}
+	public int getAccountnumber() {
+		return accountnumber;
+	}
+	public void setAccountnumber(int accountnumber) {
+		this.accountnumber = accountnumber;
+	}
+	
 	
 	
 	

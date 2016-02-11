@@ -5,8 +5,8 @@ import java.io.Serializable;
 public class SourcingContribuation extends Contribuation implements Serializable {
 
 	private String idea ;
-	public SourcingContribuation(int id, Participant participant, Project project,String idea) {
-		super(id, participant, project);
+	public SourcingContribuation(ContribuationPk pk, Participant participant, Project project,String idea) {
+		super(pk, participant, project);
 		this.idea=idea ;
 		
 	}

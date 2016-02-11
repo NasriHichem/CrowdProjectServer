@@ -11,9 +11,13 @@ import javax.persistence.OneToMany;
 @Entity 
 public class Message implements Serializable{
 	
-	private int id ;
-	private Subscriber sender ;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id ;  
+	@ManyToOne
 	private Subscriber reciever ;
+	@ManyToOne
+	private Adminstrator administrator ;
 	private String object_message ;
 	private String text_message ;
 	private String date_send;
@@ -21,32 +25,23 @@ public class Message implements Serializable{
 	public Message() {
 		super();
 	}
-	public Message(int id, Subscriber sender, Subscriber reciever,String object_message, String text_message,
+	public Message(int id,String object_message, String text_message,
 	String date_send) {
 		super();
-		this.id = id;
-		this.sender = sender;
-		this.reciever = reciever;
+		this.id = id;		
 		this.object_message = object_message;
 		this.text_message = text_message;
 		this.date_send = date_send;
 	}
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	@ManyToOne
-	public Subscriber getSender() {
-		return sender;
-	}
-	public void setSender(Subscriber sender) {
-		this.sender = sender;
-	}
-	@ManyToOne
+	
+	
 	public Subscriber getReciever() {
 		return reciever;
 	}
