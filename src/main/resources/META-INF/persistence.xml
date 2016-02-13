@@ -13,7 +13,7 @@
 	<class>projects.serveur.entites.SimpleAdmin</class>
 	<class>projects.serveur.entites.Subscriber</class>
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true"/>
 			<property name="hibernate.format_sql" value="true"/>
 		</properties>
