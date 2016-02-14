@@ -11,7 +11,9 @@ import projects.serveur.entites.Project;
 public interface ProjectsServicesRemote {
 	
 	public void addProject(Project p);
+	public void removeProject(Project p);
 	public ArrayList<Project> getListProjects();
-	public List<Project>findProjectsBy(String criteria);
+	public ArrayList<Project>findProjectsByCategory(String category);
+	public ArrayList<Project>getProjectsnoConfirmed(int value);
 
 }

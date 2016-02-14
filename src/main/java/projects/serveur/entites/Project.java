@@ -15,7 +15,12 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-
+@NamedQueries({@NamedQuery(name = "findByCategory",
+query = "SELECT p FROM Project p ,Category c WHERE p.category.id =c.id and "
++ "p.category.name_category=:category"),
+	@NamedQuery(name = "getprojectsnoconfirmed",
+	query = "SELECT p FROM Project p WHERE p.is_confirmed =:value")
+})
 public class Project implements Serializable{
 	
 	@Id
