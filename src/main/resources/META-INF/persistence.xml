@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="my-persistance">
-	<jta-data-source>java:/crowd</jta-data-source>
+	<jta-data-source>java:/Crowd</jta-data-source>
 	<class>projects.serveur.entites.Adminstrator</class>
 	<class>projects.serveur.entites.Category</class>
 	<class>projects.serveur.entites.Claim</class>
+	<class>projects.serveur.entites.Contribuation</class>
 	<class>projects.serveur.entites.ContribuationPk</class>
 	<class>projects.serveur.entites.Creator</class>
 	<class>projects.serveur.entites.Message</class>
 	<class>projects.serveur.entites.Modirator</class>
+	<class>projects.serveur.entites.Participant</class>
 	<class>projects.serveur.entites.Project</class>
 	<class>projects.serveur.entites.SimpleAdmin</class>
 	<class>projects.serveur.entites.Subscriber</class>

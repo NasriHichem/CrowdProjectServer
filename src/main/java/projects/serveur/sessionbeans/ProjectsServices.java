@@ -1,6 +1,7 @@
 package projects.serveur.sessionbeans;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -50,6 +51,14 @@ public class ProjectsServices implements ProjectsServicesRemote {
 	@Override
 	public void removeProject(Project p) {
 		em.remove(em.merge(p));
+		
+	}
+
+	@Override
+	public Long getNumberProjectsByDate(Date date) {
+		Query querygetcountofprojectsbydate = em.createNamedQuery("getcountofprojectsbydate");
+		querygetcountofprojectsbydate.setParameter("date_publish",date);
+		return  (Long) querygetcountofprojectsbydate.getSingleResult();
 		
 	}
 

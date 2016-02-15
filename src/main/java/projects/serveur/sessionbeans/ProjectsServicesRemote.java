@@ -1,6 +1,7 @@
 package projects.serveur.sessionbeans;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -15,5 +16,6 @@ public interface ProjectsServicesRemote {
 	public ArrayList<Project> getListProjects();
 	public ArrayList<Project>findProjectsByCategory(String category);
 	public ArrayList<Project>getProjectsnoConfirmed(int value);
+	public Long getNumberProjectsByDate(Date date );
 
 }

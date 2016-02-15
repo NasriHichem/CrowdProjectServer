@@ -1,6 +1,7 @@
 package projects.serveur.entites;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
@@ -19,7 +22,10 @@ import javax.persistence.OneToMany;
 query = "SELECT p FROM Project p ,Category c WHERE p.category.id =c.id and "
 + "p.category.name_category=:category"),
 	@NamedQuery(name = "getprojectsnoconfirmed",
-	query = "SELECT p FROM Project p WHERE p.is_confirmed =:value")
+	query = "SELECT p FROM Project p WHERE p.is_confirmed =:value"),
+	
+	@NamedQuery(name = "getcountofprojectsbydate",
+	query = "SELECT count(p) FROM Project p WHERE p.date_publish =:date_publish")
 })
 public class Project implements Serializable{
 	
@@ -35,6 +41,8 @@ public class Project implements Serializable{
 	private String location ;
 	private int  is_confirmed ;
 	private int is_validate ;
+	@Temporal(TemporalType.DATE)
+	private Date date_publish ;
 	@ManyToOne
 	private Creator creator ;
 	@ManyToOne
@@ -48,7 +56,7 @@ public class Project implements Serializable{
 
 	public Project(int id, String name, String title, String short_presentation, int duration,
 			float turget_funding, String picture_project, String location,int is_confirmed,
-		    int is_validate,Creator creator,Category category) {
+		  Date date_publish,  int is_validate,Creator creator,Category category) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -60,6 +68,7 @@ public class Project implements Serializable{
 		this.location = location;
 		this.is_confirmed=is_confirmed ;
 		this.is_validate=is_validate ;
+		this.date_publish=date_publish;
 		this.creator=creator ;
 		this.category=category ;
 	
@@ -142,8 +151,16 @@ public class Project implements Serializable{
 	public void setIs_validate(int is_validate) {
 		this.is_validate = is_validate;
 	}
-
+    
 	
+	public Date getDate_publish() {
+		return date_publish;
+	}
+
+	public void setDate_publish(Date date_publish) {
+		this.date_publish = date_publish;
+	}
+
 	public Creator getCreator() {
 		return creator;
 	}
