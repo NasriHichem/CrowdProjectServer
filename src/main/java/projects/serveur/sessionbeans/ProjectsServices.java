@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
 
 import projects.serveur.entites.Project;
 
@@ -55,10 +56,13 @@ public class ProjectsServices implements ProjectsServicesRemote {
 	}
 
 	@Override
-	public Long getNumberProjectsByDate(Date date) {
+	public int getNumberProjectsByDate(String date1,String date2) {
 		Query querygetcountofprojectsbydate = em.createNamedQuery("getcountofprojectsbydate");
-		querygetcountofprojectsbydate.setParameter("date_publish",date);
-		return  (Long) querygetcountofprojectsbydate.getSingleResult();
+		querygetcountofprojectsbydate.setParameter("date1",date1);
+		querygetcountofprojectsbydate.setParameter("date2",date2);
+		 
+		int result=((Long)querygetcountofprojectsbydate.getSingleResult()).intValue();
+		return result ;
 		
 	}
 

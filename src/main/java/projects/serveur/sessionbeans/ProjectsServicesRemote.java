@@ -16,6 +16,6 @@ public interface ProjectsServicesRemote {
 	public ArrayList<Project> getListProjects();
 	public ArrayList<Project>findProjectsByCategory(String category);
 	public ArrayList<Project>getProjectsnoConfirmed(int value);
-	public Long getNumberProjectsByDate(Date date );
+	public int getNumberProjectsByDate(String date1, String date2 );
 
 }

@@ -25,7 +25,7 @@ query = "SELECT p FROM Project p ,Category c WHERE p.category.id =c.id and "
 	query = "SELECT p FROM Project p WHERE p.is_confirmed =:value"),
 	
 	@NamedQuery(name = "getcountofprojectsbydate",
-	query = "SELECT count(p) FROM Project p WHERE p.date_publish =:date_publish")
+	query = "SELECT count(p) FROM Project p WHERE p.date_publish BETWEEN :date1 AND :date2")
 })
 public class Project implements Serializable{
 	
@@ -41,8 +41,7 @@ public class Project implements Serializable{
 	private String location ;
 	private int  is_confirmed ;
 	private int is_validate ;
-	@Temporal(TemporalType.DATE)
-	private Date date_publish ;
+	private String date_publish ;
 	@ManyToOne
 	private Creator creator ;
 	@ManyToOne
@@ -56,7 +55,7 @@ public class Project implements Serializable{
 
 	public Project(int id, String name, String title, String short_presentation, int duration,
 			float turget_funding, String picture_project, String location,int is_confirmed,
-		  Date date_publish,  int is_validate,Creator creator,Category category) {
+		  String date_publish,  int is_validate,Creator creator,Category category) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -153,11 +152,11 @@ public class Project implements Serializable{
 	}
     
 	
-	public Date getDate_publish() {
+	public String getDate_publish() {
 		return date_publish;
 	}
 
-	public void setDate_publish(Date date_publish) {
+	public void setDate_publish(String date_publish) {
 		this.date_publish = date_publish;
 	}
 
