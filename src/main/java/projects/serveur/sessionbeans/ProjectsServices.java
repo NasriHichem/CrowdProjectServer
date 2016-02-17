@@ -66,4 +66,10 @@ public class ProjectsServices implements ProjectsServicesRemote {
 		
 	}
 
+	@Override
+	public void confirmProject(Project p) {
+		em.merge(p);
+		
+	}
+
 }

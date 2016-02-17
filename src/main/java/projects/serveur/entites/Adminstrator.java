@@ -28,6 +28,7 @@ public class Adminstrator implements Serializable{
 	private String secret ;
 	@OneToMany(mappedBy="administrator")
 	private List<Message>messages ;
+	
 	public Adminstrator() {
 		super();
 	}
@@ -84,6 +85,11 @@ public class Adminstrator implements Serializable{
 	public void setMessages(List<Message> messages) {
 		this.messages = messages;
 	}
+
+
+
+	
+	
 	
 	
 	
