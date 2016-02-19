@@ -72,4 +72,11 @@ public class ProjectsServices implements ProjectsServicesRemote {
 		
 	}
 
+	@Override
+	public ArrayList<Project> findProjectByName(String name) {
+		Query querygetprojectsbyname= em.createNamedQuery("getprojectsbyname");
+		querygetprojectsbyname.setParameter("name",name);
+		return (ArrayList<Project>)querygetprojectsbyname.getResultList();
+	}
+
 }

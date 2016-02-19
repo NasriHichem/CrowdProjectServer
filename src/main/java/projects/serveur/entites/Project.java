@@ -25,7 +25,10 @@ query = "SELECT p FROM Project p ,Category c WHERE p.category.id =c.id and "
 	query = "SELECT p FROM Project p WHERE p.is_confirmed =:value"),
 	
 	@NamedQuery(name = "getcountofprojectsbydate",
-	query = "SELECT count(p) FROM Project p WHERE p.date_publish BETWEEN :date1 AND :date2")
+	query = "SELECT count(p) FROM Project p WHERE p.date_publish BETWEEN :date1 AND :date2"),
+	
+	@NamedQuery(name = "getprojectsbyname",
+	query = "SELECT p FROM Project p WHERE p.name=:name")
 })
 public class Project implements Serializable{
 	
