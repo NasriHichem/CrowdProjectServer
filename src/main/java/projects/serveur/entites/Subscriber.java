@@ -34,7 +34,7 @@ public class Subscriber implements Serializable {
 	private List<Message>messages ;
 	@OneToMany(mappedBy="claming")
 	private List<Claim>claims;
-	
+	private int  enable; 
 	
 	
 	public Subscriber() {
@@ -111,6 +111,13 @@ public class Subscriber implements Serializable {
 	public void setAccountnumber(int accountnumber) {
 		this.accountnumber = accountnumber;
 	}
+	public int getEnable() {
+		return enable;
+	}
+	public void setEnable(int enable) {
+		this.enable = enable;
+	}
+	
 	
 	
 	
